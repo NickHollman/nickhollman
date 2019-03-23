@@ -16,6 +16,8 @@ An approach that is well suited for solving this optimization problem is agent-b
 
 ### Main Micro-level Processes and Macro-level Dynamics of Interest
 The micro-level processes mainly include agent characteristics, namely strategies and rules of interaction. In some cases, the micro-level process will be the interactions between the agents on a network through an iterative process. Agents would then have access to information about donation amounts and preferences of their immediate neighbors or other agents they have connections with in a network. The macro-level outcomes are agent preference satisfaction and positive externalities, namely charitable impact. The macro-level outcomes will come in the form of coordination emerging from agent strategies, interactions, and network structure. 
+
+*LS COMMENTS: Great overview of goals and justifications. Process descriptions are also well thought out.*
  
  
 ## Model Outline
@@ -25,19 +27,23 @@ Description of the environment in your model.
 The environment consists of a 1D network. There is no interaction with the environment.
 
 ### 2) Agents
-Description of the "agents" in the system.
+_Description of the "agents" in the system._
 
 Class_Donors (n)
+
 Donation amount drawn from fat tail distribution, which will be more, less, or equal to the sum of charity funding gaps
+
 Preferences 
 Random if ordinal rankings
 Drawn from normal distribution if cost effectiveness estimates.
- Strategy/mechanism
+
+Strategy/mechanism
 Waiting out or being strategic with knowledge of others preferences
 Blind donation or ignore other agents information
 Total coordination that satisfies preferences equally
 Wisdom of the crowd through one iteration
 Wisdom of the crowd through multiple iterations in a network
+
 Preference satisfaction 
 Linked to funding gaps being fulfilled
 Info from network connections
@@ -46,6 +52,7 @@ Info on donation amounts
  
 Class_Charities (3)
 ·      Funding Gap (Drawn arbitrarily from range [x, y])
+
 
 Agent (Donor) procedures:
 
@@ -60,7 +67,12 @@ While agents are connected on a network, they will have the chance to obtain kno
 Agent (Charity) variables:
 Funding gap
 
+*LS COMMENTS: Good first pass description, though it would be good to see something a bit closer to code or pseudocode here. Some questions I have concern how you are conceptualizing/implementing the cost effectiveness preferences. Very interested to see how you are implementing the "wisdom of the crowds" strategy as well.*
+
+
 This model will include two agents: charities and donors, each with their own distinct variables and procedures. Agents will include the following variables: donation amount, preferences (either ordinal or cost effectiveness estimates), preference satisfaction level, and strategy (depending on the version). Donation amount for each agent will be drawn from a fat-tail distribution to mirror real donors. Many donors donate a moderate amount where few donors donate a large amount. Preferences will be randomly assigned to each agent. Preference satisfaction is based on how well each charity is funded. Agent strategies depend on the version of the model and the specified coordination mechanism. In addition to strategies, all agents will engage in the giving period in which all donations are allocated to the coordination mechanism and distributed to charities accordingly. The coordination mechanism is not an agent itself but rather an underlying algorithm for binding the micro-level dynamics of agent characteristics and macro-level outcomes of coordination and charitable impact. Charities will include the variable of a funding gap. Finding gaps are draw randomly from a predefined range.
+
+*LS COMMENTS: Great description.*
 
 ### 3) Action and Interaction
 
@@ -69,6 +81,8 @@ _Description of the topology of who interacts with whom in the system._
 
 When preferences are represented as cost effectiveness estimates, this model is best visualized as a network. All agents have at least one connection with another agent in the network. Agents, when acting on their procedures, may only obtain information from their immediate connections.
 
+*LS COMMENTS: Good.*
+
 **_Action Sequence_**
 _What does an agent, cell, etc. do on a given turn?_
 
@@ -76,6 +90,8 @@ Initialize variables for charities and donors (assign funding gaps, donation amo
 Depending on the model variation, agents check their strategy or the overall mechanism and donate accordingly. 
 In the case of the extension of the network variation. Agents interact with their connections in the network obtaining information on preferences and donation amount to dictate their donation decision and strategy.
 Agents update the following variables: preference satisfaction, donation amount, and network connections. 
+ 
+ _LS COMMENTS: Good._
  
 ### 4) Model Parameters and Initialization
 _Describe and list any global parameters you will be applying in your model.
@@ -126,3 +142,4 @@ Number of agents, n. This variable will likely fall in the range of 5 - 20.
 Sweeping the above parameters will allow for testing any interdependencies between variables especially donor amounts and its relation (=, >, <) to the funding gap.
 
 
+*LS COMMENTS: Great approach and development of a plan here. Seems like you have some clearly thought out approaches that just need to be tranlsated into a computational implementation so you can start hammering out the next level of details. Feel free to talk to me in computational part of class in the next few weeks if you have any questions or issues pop up. Look forward to seeing what you end up with here! 18.5/20*
